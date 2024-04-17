@@ -11,6 +11,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class JeuMain extends Application {
@@ -32,21 +33,28 @@ public class JeuMain extends Application {
         //obstacle
         Obstacle mur=new Obstacle(200,200,200,200);
         Obstacle mur2=new Obstacle(20,100,100,200);
-        Obstacle mur3=new Obstacle(300,20,10,100);
-        Obstacle mur4=new Obstacle(400,20,200,20);
+        Obstacle mur3=new Obstacle(300,20,40,100);
+        Obstacle mur4=new Obstacle(400,20,200,40);
+        ArrayList<Obstacle> obstList=new ArrayList<Obstacle>();
+        obstList.add(mur);
+        obstList.add(mur2);
+        obstList.add(mur3);
+        obstList.add(mur4);
 
         //panneau du jeu
         Pane jeu = new Pane();
         jeu.setPrefSize(640, 480);
         jeu.getChildren().add(pacman);
         jeu.getChildren().add(fantome);
-        jeu.getChildren().addAll(mur,mur2,mur3,mur4);
+        for(int i=0; i< obstList.size();i++){
+            jeu.getChildren().add(obstList.get(i));
+        }
         root.setCenter(jeu);
         //on construit une scene 640 * 480 pixels
         scene = new Scene(root);
 
         //Gestion du déplacement du personnage
-        deplacer(pacman, fantome,mur,mur2,mur3,mur4);
+        deplacer(pacman, fantome,obstList);
 
         primaryStage.setTitle("... Pac Man ...");
 
@@ -61,7 +69,7 @@ public class JeuMain extends Application {
      * @param j1
      * @param j2
      */
-    private void deplacer(Personnage j1, Personnage j2,Obstacle mur,Obstacle mur2,Obstacle mur3,Obstacle mur4) {
+    private void deplacer(Personnage j1, Personnage j2,ArrayList<Obstacle> obstList) {
         scene.setOnKeyPressed((KeyEvent event) -> {
             double posJ1X=j1.getLayoutX();
             double posJ1Y=j1.getLayoutY();
@@ -98,16 +106,17 @@ public class JeuMain extends Application {
                 System.out.println("Collision....");
                 Platform.exit();
             }
-            if (j1.murCollision(mur) || j1.murCollision(mur2)
-                    ||j1.murCollision(mur3)||j1.murCollision(mur4) ) {
-                j1.setLayoutX(posJ1X);
-                j1.setLayoutY(posJ1Y);
+            for(int i=0; i< obstList.size();i++){
+                if (j1.murCollision(obstList.get(i))) {
+                    j1.setLayoutX(posJ1X);
+                    j1.setLayoutY(posJ1Y);
+                }
+                if (j2.murCollision(obstList.get(i))) {
+                    j2.setLayoutX(posJ2X);
+                    j2.setLayoutY(posJ2Y);
+                }
             }
-            if (j2.murCollision(mur)|| j2.murCollision(mur2)
-                    ||j2.murCollision(mur3)||j2.murCollision(mur4) ) {
-                j2.setLayoutX(posJ2X);
-                j2.setLayoutY(posJ2Y);
-            }
+
         });
     }
 
