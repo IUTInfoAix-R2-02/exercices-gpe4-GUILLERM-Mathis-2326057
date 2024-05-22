@@ -6,6 +6,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -57,7 +58,29 @@ public class Palette extends Application {
         rouge = new Button("Rouge");
         bleu = new Button("Bleu");
 
-        /* VOTRE CODE ICI */
+        this.vert.addEventHandler(MouseEvent.MOUSE_CLICKED, actionEvent -> {
+            this.nbVert=this.nbVert+1;
+            texteDuHaut.setText("Vert choisi "+this.nbVert+" fois");
+            texteDuBas.setText("Le vert est une jolie couleur");
+            this.texteDuBas.setStyle("-fx-text-fill: green");
+            this.panneau.setStyle("-fx-background-color: green");
+        });
+
+        this.rouge.addEventHandler(MouseEvent.MOUSE_CLICKED, actionEvent -> {
+            this.nbRouge=this.nbRouge+1;
+            texteDuHaut.setText("Rouge choisi "+this.nbRouge+" fois");
+            texteDuBas.setText("Le rouge est une jolie couleur");
+            this.texteDuBas.setStyle("-fx-text-fill: red");
+            this.panneau.setStyle("-fx-background-color: red");
+        });
+
+        this.bleu.addEventHandler(MouseEvent.MOUSE_CLICKED, actionEvent -> {
+            this.nbBleu=this.nbBleu+1;
+            texteDuHaut.setText("Bleu choisi "+this.nbBleu+" fois");
+            texteDuBas.setText("Le bleu est une jolie couleur");
+            this.texteDuBas.setStyle("-fx-text-fill: blue");
+            this.panneau.setStyle("-fx-background-color: blue");
+        });
 
         boutons.getChildren().addAll(vert, rouge, bleu);
 

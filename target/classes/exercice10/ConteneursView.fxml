@@ -1,2 +1,67 @@
-<?import javafx.scene.layout.BorderPane?>
-<BorderPane></BorderPane>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.amu.iut.exercice10.Conteneurs">
+    <!-- Menu Bar -->
+    <top>
+        <MenuBar>
+            <menus>
+                <Menu text="File">
+                    <items>
+                        <MenuItem text="New" fx:id="newItem"/>
+                        <MenuItem text="Open File" fx:id="openItem"/>
+                        <MenuItem text="Save" fx:id="saveItem"/>
+                        <MenuItem text="Close" fx:id="closeItem"/>
+                    </items>
+                </Menu>
+                <Menu text="Edit">
+                    <items>
+                        <MenuItem text="Cut" fx:id="cutItem"/>
+                        <MenuItem text="Copy" fx:id="copyItem"/>
+                        <MenuItem text="Paste" fx:id="pasteItem"/>
+                    </items>
+                </Menu>
+                <Menu text="Help"/>
+            </menus>
+        </MenuBar>
+    </top>
+
+    <!-- Left Control Panel -->
+    <left>
+        <VBox alignment="CENTER_LEFT" spacing="15" BorderPane.alignment="CENTER">
+            <Label text="Boutons : "/>
+            <Button text="Bouton 1" fx:id="bouton1"/>
+            <Button text="Bouton 2" fx:id="bouton2"/>
+            <Button text="Bouton 3" fx:id="bouton3"/>
+        </VBox>
+    </left>
+
+    <!-- Center Control Panel -->
+    <center>
+        <VBox spacing="15" BorderPane.alignment="CENTER">
+            <HBox spacing="10">
+                <Label text="Name: "/>
+                <TextField promptText="Entrez votre nom" fx:id="champName"/>
+            </HBox>
+            <HBox spacing="10">
+                <Label text="Email: "/>
+                <TextField promptText="Entrez votre Email" fx:id="champEmail"/>
+            </HBox>
+            <HBox spacing="10">
+                <Label text="Password: "/>
+                <PasswordField promptText="Entrez votre mot de passe" fx:id="champPassword"/>
+            </HBox>
+            <HBox spacing="10" alignment="CENTER">
+                <Button text="Submit" fx:id="submit"/>
+                <Button text="Cancel" fx:id="cancel"/>
+            </HBox>
+        </VBox>
+    </center>
+
+    <!-- Bottom Label -->
+    <bottom>
+        <Label text="Ceci est un label de bas de page" BorderPane.alignment="CENTER"/>
+    </bottom>
+</BorderPane>
