@@ -1,4 +1,4 @@
-package fr.amu.iut.exercice4;
+package fr.amu.iut.exercice14;
 
 import javafx.beans.binding.IntegerBinding;
 import javafx.beans.property.IntegerProperty;
@@ -23,6 +23,18 @@ public class MainPersonnes {
 
         question1();
 //        question2();
+    }
+    public static double ageMoyen(SimpleListProperty<Personne> ages) {
+        if (ages == null || ages.isEmpty()) {
+            throw new IllegalArgumentException("La liste ne doit pas être nulle ou vide");
+        }
+
+        int somme = 0;
+        for (int i=0; i<ages.size();++i) {
+            somme += ages.indexOf(i);
+        }
+
+        return (double) somme / ages.size();
     }
 
     public static void question1() {
