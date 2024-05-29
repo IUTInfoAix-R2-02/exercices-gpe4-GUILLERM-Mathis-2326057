@@ -6,8 +6,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -73,9 +71,10 @@ public class IHMPendu extends Application {
         HBox nz = new HBox();
         nz.getChildren().addAll(n, p, q, r, s, t, v, w, x, z);
         nz.setAlignment(Pos.CENTER);
-        Image image=new Image("../../resources/exercice6/pendu7.png");
-        ImageView imageView = new ImageView(image);
-        lettre.getChildren().addAll(imageView,ae, bm, nz,rejouer);
+
+        barre = new TextField();
+        barre.setAlignment(Pos.CENTER);
+        lettre.getChildren().addAll(barre, ae, bm, nz,rejouer);
         root.setBottom(lettre);
 
         livesLabel = new Label();
